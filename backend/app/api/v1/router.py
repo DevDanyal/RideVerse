@@ -84,3 +84,11 @@ api_v1_router.include_router(cars_router)
 from app.api.v1.weapons import router as weapons_router  # noqa: E402
 
 api_v1_router.include_router(weapons_router)
+
+# ── Shops & Marketplace ──────────────────────────────────────────────────
+
+from app.api.v1.shops import router as shops_router  # noqa: E402
+from app.api.v1.shops import marketplace_router as marketplace_router  # noqa: E402
+
+api_v1_router.include_router(shops_router)
+api_v1_router.include_router(marketplace_router)

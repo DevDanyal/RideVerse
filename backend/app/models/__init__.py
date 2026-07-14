@@ -55,6 +55,9 @@ from app.models.business import Business, BusinessIncome, BusinessType
 # Marketplace
 from app.models.marketplace import MarketplaceListing, MarketplaceSale
 
+# Shops
+from app.models.shop import Shop, ShopCategory, ShopItem, ShopTransaction, ShopTransactionType
+
 # Social
 from app.models.friend import Friend, FriendStatus
 from app.models.club import Club, ClubMember, ClubMemberRole
@@ -142,6 +145,12 @@ __all__ = [
     # Marketplace
     "MarketplaceListing",
     "MarketplaceSale",
+    # Shops
+    "Shop",
+    "ShopCategory",
+    "ShopItem",
+    "ShopTransaction",
+    "ShopTransactionType",
     # Social
     "Friend",
     "FriendStatus",
