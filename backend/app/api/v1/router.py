@@ -66,3 +66,9 @@ api_v1_router.include_router(vehicles_router)
 from app.api.v1.garages import router as garages_router  # noqa: E402
 
 api_v1_router.include_router(garages_router)
+
+# ── Bikes (Honda 125 System) ─────────────────────────────────────────────────
+
+from app.api.v1.bikes import router as bikes_router  # noqa: E402
+
+api_v1_router.include_router(bikes_router)

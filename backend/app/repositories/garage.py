@@ -75,3 +75,17 @@ class GarageRepository:
         )
         result = await self._session.execute(stmt)
         return result.scalar_one_or_none()
+
+    async def create_slot(self, garage_id: uuid.UUID, slot_number: int, vehicle_id: uuid.UUID | None = None, occupied: bool = False) -> GarageSlot:
+        slot = GarageSlot(garage_id=garage_id, slot_number=slot_number, vehicle_id=vehicle_id, occupied=occupied)
+        self._session.add(slot)
+        await self._session.flush()
+        return slot
+
+    async def get_occupied_count(self, garage_id: uuid.UUID) -> int:
+        stmt = select(GarageSlot).where(
+            GarageSlot.garage_id == garage_id,
+            GarageSlot.occupied.is_(True),
+        )
+        result = await self._session.execute(stmt)
+        return len(list(result.scalars().all()))

@@ -13,7 +13,11 @@ from app.models.character import Character, CharacterAppearance
 # Vehicles
 from app.models.vehicle import Vehicle, VehicleType
 from app.models.bike import Bike
+from app.models.bike_variant import BikeVariant
+from app.models.bike_insurance import BikeInsurance
 from app.models.car import Car
+from app.models.repair_history import RepairHistory
+from app.models.fuel import FuelStation, FuelTransaction
 
 # Inventory
 from app.models.inventory import Inventory, InventoryHistory, InventoryItem, InventoryAction, ItemRarity, ItemType
@@ -81,7 +85,12 @@ __all__ = [
     "Vehicle",
     "VehicleType",
     "Bike",
+    "BikeVariant",
+    "BikeInsurance",
     "Car",
+    "RepairHistory",
+    "FuelStation",
+    "FuelTransaction",
     # Inventory
     "Inventory",
     "InventoryItem",

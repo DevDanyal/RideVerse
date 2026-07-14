@@ -35,6 +35,7 @@ class Vehicle(Base):
     vehicle_type: Mapped[VehicleType] = mapped_column(
         SAEnum(VehicleType, native_enum=False), nullable=False, index=True
     )
+    name: Mapped[str] = mapped_column(String(100), default="", nullable=False)
     brand: Mapped[str] = mapped_column(String(100), nullable=False)
     model: Mapped[str] = mapped_column(String(100), nullable=False)
     year: Mapped[int] = mapped_column(nullable=False)
@@ -54,6 +55,9 @@ class Vehicle(Base):
     health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
     engine_health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
     body_health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
+    wheel_health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
+    brake_health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
+    suspension_health: Mapped[float] = mapped_column(Float, default=100.0, nullable=False)
 
     top_speed: Mapped[float] = mapped_column(Float, default=120.0, nullable=False)
     acceleration: Mapped[float] = mapped_column(Float, default=50.0, nullable=False)
@@ -67,6 +71,12 @@ class Vehicle(Base):
         ForeignKey("garages.id", ondelete="SET NULL"),
         nullable=True,
     )
+    is_primary: Mapped[bool] = mapped_column(default=False, nullable=False)
+    garage_slot_id: Mapped[uuid.UUID | None] = mapped_column(
+        PG_UUID(as_uuid=True),
+        ForeignKey("garage_slots.id", ondelete="SET NULL"),
+        nullable=True,
+    )
 
     player: Mapped["Player"] = relationship("Player")
     bike: Mapped["Bike | None"] = relationship(
@@ -76,9 +86,6 @@ class Vehicle(Base):
         "Car", back_populates="vehicle", uselist=False
     )
     garage: Mapped["Garage | None"] = relationship("Garage", back_populates="vehicles")
-    garage_slot: Mapped["GarageSlot | None"] = relationship(
-        "GarageSlot", back_populates="vehicle", uselist=False
-    )
 
     __table_args__ = (
         {"comment": "Base vehicle record shared by bikes and cars"},

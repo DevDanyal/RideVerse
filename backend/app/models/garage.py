@@ -49,7 +49,8 @@ class GarageSlot(Base):
 
     garage: Mapped[Garage] = relationship("Garage", back_populates="slots")
     vehicle: Mapped["Vehicle | None"] = relationship(
-        "Vehicle", back_populates="garage_slot"
+        "Vehicle",
+        foreign_keys="[GarageSlot.vehicle_id]",
     )
 
     __table_args__ = (
