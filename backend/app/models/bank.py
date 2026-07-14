@@ -1,10 +1,10 @@
+"""Bank account model — checking, savings, and loan support."""
 from __future__ import annotations
 
 import uuid
-from datetime import datetime
 from enum import StrEnum
 
-from sqlalchemy import DateTime, Enum as SAEnum, Float, ForeignKey, String
+from sqlalchemy import Boolean, Enum as SAEnum, Float, ForeignKey, Integer, String
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -36,6 +36,25 @@ class BankAccount(Base):
     balance: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     interest_rate: Mapped[float] = mapped_column(Float, default=0.01, nullable=False)
     is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
+
+    # ── Overdraft ─────────────────────────────────────────────────────────
+    overdraft_limit: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+
+    # ── Loan (future-ready, disabled by default) ──────────────────────────
+    loan_enabled: Mapped[bool] = mapped_column(default=False, nullable=False)
+    loan_balance: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    loan_interest_rate: Mapped[float] = mapped_column(Float, default=0.05, nullable=False)
+    loan_max_amount: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    loan_term_days: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
+
+    # ── Tax (future-ready) ────────────────────────────────────────────────
+    tax_rate: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+
+    # ── Limits ────────────────────────────────────────────────────────────
+    daily_transfer_limit: Mapped[float] = mapped_column(
+        Float, default=100_000.0, nullable=False
+    )
+    daily_transferred: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
 
     player: Mapped["Player"] = relationship("Player", back_populates="bank_accounts")
 

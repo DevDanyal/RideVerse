@@ -613,9 +613,7 @@ class TestEconomyService:
         from app.services.economy import EconomyService
 
         account, player = await _create_player_with_account(db)
-        player_repo = PlayerRepository(db)
-        econ_repo = EconomyRepository(db)
-        svc = EconomyService(player_repo, econ_repo)
+        svc = EconomyService(db)
 
         wallet = await svc.get_wallet(account.id)
         assert wallet["cash"] == 1000.0
@@ -624,9 +622,7 @@ class TestEconomyService:
         from app.services.economy import EconomyService
         from app.core.exceptions import NotFoundError
 
-        player_repo = PlayerRepository(db)
-        econ_repo = EconomyRepository(db)
-        svc = EconomyService(player_repo, econ_repo)
+        svc = EconomyService(db)
 
         with pytest.raises(NotFoundError):
             await svc.get_wallet(uuid.uuid4())
@@ -650,9 +646,7 @@ class TestBankAccountService:
         from app.services.bank import BankAccountService
 
         account, player = await _create_player_with_account(db)
-        player_repo = PlayerRepository(db)
-        bank_repo = BankAccountRepository(db)
-        svc = BankAccountService(player_repo, bank_repo)
+        svc = BankAccountService(db)
 
         accounts = await svc.get_accounts(account.id)
         assert accounts == []

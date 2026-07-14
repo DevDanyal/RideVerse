@@ -35,7 +35,7 @@ from app.models.weapon import (
 )
 
 # Economy
-from app.models.economy import DailyReward, Transaction, Wallet, TransactionType
+from app.models.economy import ATM, DailyReward, Transaction, Wallet, TransactionType
 
 # Missions
 from app.models.mission import Mission, MissionHistory, PlayerMission
@@ -121,6 +121,7 @@ __all__ = [
     "Transaction",
     "TransactionType",
     "DailyReward",
+    "ATM",
     # Missions
     "Mission",
     "PlayerMission",

@@ -1,10 +1,9 @@
-"""Repository layer for bank account-related database operations."""
+"""Repository layer for bank account database operations."""
 from __future__ import annotations
 
 import uuid
-from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.bank import BankAccount
@@ -16,11 +15,13 @@ class BankAccountRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
 
-    async def create(self, data: dict[str, Any]) -> dict[str, Any]:
-        pass
-
-    async def get_by_id(self, id: uuid.UUID) -> dict[str, Any] | None:
-        pass
+    async def get_by_id(self, account_id: uuid.UUID) -> BankAccount | None:
+        stmt = select(BankAccount).where(
+            BankAccount.id == account_id,
+            BankAccount.is_deleted.is_(False),
+        )
+        result = await self._session.execute(stmt)
+        return result.scalar_one_or_none()
 
     async def get_by_player_id(self, player_id: uuid.UUID) -> list[BankAccount]:
         stmt = select(BankAccount).where(
@@ -30,11 +31,39 @@ class BankAccountRepository:
         result = await self._session.execute(stmt)
         return list(result.scalars().all())
 
-    async def get_all(self, skip: int = 0, limit: int = 20) -> list[dict[str, Any]]:
-        pass
+    async def get_by_account_number(self, account_number: str) -> BankAccount | None:
+        stmt = select(BankAccount).where(
+            BankAccount.account_number == account_number,
+            BankAccount.is_deleted.is_(False),
+        )
+        result = await self._session.execute(stmt)
+        return result.scalar_one_or_none()
 
-    async def update(self, id: uuid.UUID, data: dict[str, Any]) -> dict[str, Any] | None:
-        pass
+    async def create_account(self, data: dict) -> BankAccount:
+        account = BankAccount(**data)
+        self._session.add(account)
+        await self._session.flush()
+        return account
 
-    async def delete(self, id: uuid.UUID) -> bool:
-        pass
+    async def update_account(
+        self, account_id: uuid.UUID, **kwargs
+    ) -> BankAccount | None:
+        stmt = (
+            update(BankAccount)
+            .where(
+                BankAccount.id == account_id,
+                BankAccount.is_deleted.is_(False),
+            )
+            .values(**kwargs)
+            .returning(BankAccount)
+        )
+        result = await self._session.execute(stmt)
+        return result.scalar_one_or_none()
+
+    async def soft_delete(self, account_id: uuid.UUID) -> bool:
+        stmt = update(BankAccount).where(
+            BankAccount.id == account_id,
+            BankAccount.is_deleted.is_(False),
+        ).values(is_deleted=True)
+        result = await self._session.execute(stmt)
+        return result.rowcount > 0
