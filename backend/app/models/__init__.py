@@ -1,0 +1,153 @@
+"""Models package — import all models so SQLAlchemy can discover them for migrations."""
+from __future__ import annotations
+
+# Auth & Sessions
+from app.models.auth import AccountRole, AccountStatus, PlayerAccount, PlayerSession, RefreshToken
+
+# Player
+from app.models.player import Player, PlayerSettings, PlayerStatistics
+
+# Character
+from app.models.character import Character, CharacterAppearance
+
+# Vehicles
+from app.models.vehicle import Vehicle, VehicleType
+from app.models.bike import Bike
+from app.models.car import Car
+
+# Inventory
+from app.models.inventory import Inventory, InventoryHistory, InventoryItem, InventoryAction, ItemRarity, ItemType
+
+# Weapons
+from app.models.weapon import PlayerWeapon, Weapon, WeaponUpgrade, WeaponType
+
+# Economy
+from app.models.economy import DailyReward, Transaction, Wallet, TransactionType
+
+# Missions
+from app.models.mission import Mission, MissionHistory, PlayerMission
+
+# Garage
+from app.models.garage import Garage, GarageSlot
+
+# Bank
+from app.models.bank import BankAccount, AccountType
+
+# Property
+from app.models.property import Property, PropertyType
+
+# Business
+from app.models.business import Business, BusinessIncome, BusinessType
+
+# Marketplace
+from app.models.marketplace import MarketplaceListing, MarketplaceSale
+
+# Social
+from app.models.friend import Friend, FriendStatus
+from app.models.club import Club, ClubMember, ClubMemberRole
+
+# Communication
+from app.models.chat import ChatChannel, ChatMessage, ChannelType
+from app.models.notification import Notification, NotificationType
+
+# Achievements & Leaderboards
+from app.models.achievement import Achievement, PlayerAchievement
+from app.models.leaderboard import Leaderboard, LeaderboardEntry, LeaderboardType
+
+# World
+from app.models.police import CrimeHistory, PoliceRecord
+from app.models.traffic import TrafficEvent, TrafficSeverity
+from app.models.npc import Npc, NpcDialogue, NpcType
+
+# Analytics & Logging
+from app.models.analytics import AnalyticsEvent
+from app.models.log import AuditLog, ErrorLog, LogSeverity
+
+__all__ = [
+    # Auth
+    "AccountRole",
+    "AccountStatus",
+    "PlayerAccount",
+    "PlayerSession",
+    "RefreshToken",
+    # Player
+    "Player",
+    "PlayerSettings",
+    "PlayerStatistics",
+    # Character
+    "Character",
+    "CharacterAppearance",
+    # Vehicles
+    "Vehicle",
+    "VehicleType",
+    "Bike",
+    "Car",
+    # Inventory
+    "Inventory",
+    "InventoryItem",
+    "InventoryHistory",
+    "ItemType",
+    "ItemRarity",
+    "InventoryAction",
+    # Weapons
+    "Weapon",
+    "WeaponType",
+    "PlayerWeapon",
+    "WeaponUpgrade",
+    # Economy
+    "Wallet",
+    "Transaction",
+    "TransactionType",
+    "DailyReward",
+    # Missions
+    "Mission",
+    "PlayerMission",
+    "MissionHistory",
+    # Garage
+    "Garage",
+    "GarageSlot",
+    # Bank
+    "BankAccount",
+    "AccountType",
+    # Property
+    "Property",
+    "PropertyType",
+    # Business
+    "Business",
+    "BusinessIncome",
+    "BusinessType",
+    # Marketplace
+    "MarketplaceListing",
+    "MarketplaceSale",
+    # Social
+    "Friend",
+    "FriendStatus",
+    "Club",
+    "ClubMember",
+    "ClubMemberRole",
+    # Communication
+    "ChatChannel",
+    "ChatMessage",
+    "ChannelType",
+    "Notification",
+    "NotificationType",
+    # Achievements & Leaderboards
+    "Achievement",
+    "PlayerAchievement",
+    "Leaderboard",
+    "LeaderboardEntry",
+    "LeaderboardType",
+    # World
+    "PoliceRecord",
+    "CrimeHistory",
+    "TrafficEvent",
+    "TrafficSeverity",
+    "Npc",
+    "NpcDialogue",
+    "NpcType",
+    # Analytics & Logging
+    "AnalyticsEvent",
+    "AuditLog",
+    "ErrorLog",
+    "LogSeverity",
+]
