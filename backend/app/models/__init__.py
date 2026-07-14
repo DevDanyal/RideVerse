@@ -16,6 +16,8 @@ from app.models.bike import Bike
 from app.models.bike_variant import BikeVariant
 from app.models.bike_insurance import BikeInsurance
 from app.models.car import Car
+from app.models.car_variant import CarVariant
+from app.models.car_insurance import CarInsurance
 from app.models.repair_history import RepairHistory
 from app.models.fuel import FuelStation, FuelTransaction
 
@@ -88,6 +90,8 @@ __all__ = [
     "BikeVariant",
     "BikeInsurance",
     "Car",
+    "CarVariant",
+    "CarInsurance",
     "RepairHistory",
     "FuelStation",
     "FuelTransaction",
