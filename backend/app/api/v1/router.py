@@ -78,3 +78,9 @@ api_v1_router.include_router(bikes_router)
 from app.api.v1.cars import router as cars_router  # noqa: E402
 
 api_v1_router.include_router(cars_router)
+
+# ── Weapons (Weapon System) ──────────────────────────────────────────────
+
+from app.api.v1.weapons import router as weapons_router  # noqa: E402
+
+api_v1_router.include_router(weapons_router)

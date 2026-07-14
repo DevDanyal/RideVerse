@@ -25,7 +25,14 @@ from app.models.fuel import FuelStation, FuelTransaction
 from app.models.inventory import Inventory, InventoryHistory, InventoryItem, InventoryAction, ItemRarity, ItemType
 
 # Weapons
-from app.models.weapon import PlayerWeapon, Weapon, WeaponUpgrade, WeaponType
+from app.models.weapon import (
+    AmmoType,
+    PlayerWeapon,
+    Weapon,
+    WeaponAmmunition,
+    WeaponAttachment,
+    WeaponType,
+)
 
 # Economy
 from app.models.economy import DailyReward, Transaction, Wallet, TransactionType
@@ -105,8 +112,10 @@ __all__ = [
     # Weapons
     "Weapon",
     "WeaponType",
+    "AmmoType",
     "PlayerWeapon",
-    "WeaponUpgrade",
+    "WeaponAttachment",
+    "WeaponAmmunition",
     # Economy
     "Wallet",
     "Transaction",
