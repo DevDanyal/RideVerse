@@ -348,13 +348,12 @@ class TestConnectionManager:
         assert self.mgr.validate_reconnect_token(pid, token) is True
         assert self.mgr.validate_reconnect_token(pid, token) is False
 
-    def test_queue_and_flush_pending_messages(self):
+    @pytest.mark.asyncio
+    async def test_queue_and_flush_pending_messages(self):
         pid = uuid.uuid4()
         self.mgr.queue_message(pid, {"event": "test", "data": {}})
         assert len(self.mgr._pending_messages[pid]) == 1
-        count = asyncio.get_event_loop().run_until_complete(
-            self.mgr.flush_pending_messages(pid)
-        )
+        count = await self.mgr.flush_pending_messages(pid)
         assert count == 0  # no connection to send to
 
     def test_queue_pending_messages_limit(self):
