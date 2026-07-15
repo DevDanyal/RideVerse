@@ -200,6 +200,82 @@ namespace RideVerse.Core
                 public const float ExhaustSmokeRate = 0.1f;
                 public const float DustParticleSpeed = 2f;
             }
+
+            public static class SportsCar
+            {
+                public const string VehicleId = "sports_car";
+                public const string DisplayName = "Sports Car";
+
+                // Engine
+                public const float MaxRPM = 8000f;
+                public const float IdleRPM = 800f;
+                public const float RedlineRPM = 7500f;
+                public const float MaxPower = 320f;
+                public const float MaxTorque = 400f;
+                public const float MaxSpeedKmh = 260f;
+
+                // Transmission — 6-speed + Reverse
+                public const int TotalGears = 6;
+                public const int ReverseGear = -1;
+                public const int NeutralGear = 0;
+                public const float FinalDriveRatio = 3.42f;
+
+                public static readonly float[] GearRatios = new float[]
+                {
+                    0f,
+                    3.636f,
+                    2.375f,
+                    1.761f,
+                    1.346f,
+                    1.062f,
+                    0.872f
+                };
+
+                // Physical dimensions
+                public const float Mass = 1500f;
+                public const float WheelBase = 2.45f;
+                public const float TrackWidth = 1.55f;
+                public const float FrontWheelRadius = 0.33f;
+                public const float RearWheelRadius = 0.34f;
+
+                // Steering
+                public const float MaxSteerAngle = 35f;
+                public const float SteeringSpeed = 150f;
+                public const float SpeedDependentSteerFactor = 0.6f;
+
+                // Suspension
+                public const float FrontSuspensionTravel = 0.08f;
+                public const float RearSuspensionTravel = 0.09f;
+                public const float FrontSpringForce = 45000f;
+                public const float RearSpringForce = 52000f;
+                public const float FrontDamperForce = 5500f;
+                public const float RearDamperForce = 6000f;
+                public const float AntiRollBarForce = 8000f;
+
+                // Braking
+                public const float FrontBrakeForce = 5500f;
+                public const float RearBrakeForce = 4500f;
+                public const float EngineBrakeForce = 1200f;
+                public const float ABSActivationThreshold = 0.2f;
+
+                // Fuel
+                public const float MaxFuel = 60f;
+                public const float FuelConsumptionRate = 0.08f;
+                public const float FuelWarningThreshold = 8f;
+
+                // Health
+                public const float MaxHealth = 100f;
+
+                // Drift
+                public const float DriftSteerAssist = 0.4f;
+                public const float DriftThrottleBoost = 1.2f;
+                public const float HandbrakeForce = 3500f;
+
+                // Aerodynamics
+                public const float DownforceCoefficient = 0.3f;
+                public const float DragCoefficient = 0.35f;
+                public const float FrontalArea = 2.2f;
+            }
         }
     }
 }

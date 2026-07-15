@@ -73,6 +73,7 @@ namespace RideVerse.UI
         private int _wantedLevel;
         private int _chatMessageCount;
         private VehicleController _trackedVehicle;
+        private CarController _trackedCar;
 
         private void Start()
         {
@@ -334,8 +335,14 @@ namespace RideVerse.UI
 
         private void UpdateVehicleHUD()
         {
-            if (_trackedVehicle == null) return;
+            if (_trackedVehicle != null)
+                UpdateVehicleHUDFromBike();
+            else if (_trackedCar != null)
+                UpdateVehicleHUDFromCar();
+        }
 
+        private void UpdateVehicleHUDFromBike()
+        {
             if (_speedText != null)
             {
                 _speedText.text = $"{_trackedVehicle.CurrentSpeed:F0}";
@@ -362,6 +369,54 @@ namespace RideVerse.UI
             {
                 _vehicleHealthText.text = $"HP: {_trackedVehicle.CurrentHealth:F0}";
             }
+        }
+
+        private void UpdateVehicleHUDFromCar()
+        {
+            if (_speedText != null)
+            {
+                _speedText.text = $"{_trackedCar.CurrentSpeed:F0}";
+            }
+
+            if (_gearText != null)
+            {
+                _gearText.text = _trackedCar.CurrentGear > 0
+                    ? $"Gear {_trackedCar.CurrentGear}"
+                    : "N";
+            }
+
+            if (_vehicleFuelBar != null)
+            {
+                _vehicleFuelBar.value = _trackedCar.FuelPercent;
+            }
+
+            if (_vehicleFuelFill != null)
+            {
+                _vehicleFuelFill.color = Color.Lerp(Color.red, Color.green, _trackedCar.FuelPercent);
+            }
+
+            if (_vehicleHealthText != null)
+            {
+                _vehicleHealthText.text = $"HP: {_trackedCar.CurrentHealth:F0}";
+            }
+        }
+
+        public void TrackCar(CarController car)
+        {
+            _trackedCar = car;
+            _trackedVehicle = null;
+            SetVehicleHUDVisible(car != null);
+
+            if (car != null && _vehicleNameText != null)
+            {
+                _vehicleNameText.text = car.DisplayName;
+            }
+        }
+
+        public void UntrackCar()
+        {
+            _trackedCar = null;
+            SetVehicleHUDVisible(false);
         }
     }
 }
