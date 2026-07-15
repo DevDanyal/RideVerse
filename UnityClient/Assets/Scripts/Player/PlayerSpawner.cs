@@ -13,6 +13,9 @@ namespace RideVerse.Player
         [Header("Spawn")]
         [SerializeField] private Transform _defaultSpawnPoint;
 
+        [Header("State")]
+        [SerializeField] private bool _loadSavedPosition = true;
+
         private GameObject _spawnedPlayer;
 
         public GameObject SpawnedPlayer => _spawnedPlayer;
@@ -41,6 +44,19 @@ namespace RideVerse.Player
             Quaternion spawnRot = _defaultSpawnPoint != null
                 ? _defaultSpawnPoint.rotation
                 : Quaternion.identity;
+
+            if (_loadSavedPosition && PlayerPrefs.HasKey(Constants.PlayerPrefs.PlayerPosX))
+            {
+                float x = PlayerPrefs.GetFloat(Constants.PlayerPrefs.PlayerPosX, spawnPos.x);
+                float y = PlayerPrefs.GetFloat(Constants.PlayerPrefs.PlayerPosY, spawnPos.y);
+                float z = PlayerPrefs.GetFloat(Constants.PlayerPrefs.PlayerPosZ, spawnPos.z);
+                spawnPos = new Vector3(x, y, z);
+
+                float rotY = PlayerPrefs.GetFloat(Constants.PlayerPrefs.PlayerRotY, 0f);
+                spawnRot = Quaternion.Euler(0f, rotY, 0f);
+
+                Debug.Log($"[PlayerSpawner] Loaded saved position: {spawnPos}");
+            }
 
             _spawnedPlayer = Instantiate(_playerPrefab, spawnPos, spawnRot);
             _spawnedPlayer.tag = Constants.Tags.Player;

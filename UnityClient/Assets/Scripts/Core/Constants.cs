@@ -81,6 +81,10 @@ namespace RideVerse.Core
             public const string PlayerId = "rv_player_id";
             public const string DisplayName = "rv_display_name";
             public const string RememberEmail = "rv_remember_email";
+            public const string PlayerPosX = "rv_player_pos_x";
+            public const string PlayerPosY = "rv_player_pos_y";
+            public const string PlayerPosZ = "rv_player_pos_z";
+            public const string PlayerRotY = "rv_player_rot_y";
         }
 
         public static class Network
@@ -105,6 +109,41 @@ namespace RideVerse.Core
             public const float CameraDistance = 4f;
             public const float CameraHeight = 2f;
             public const float CameraSmoothness = 10f;
+        }
+
+        public static class Vehicle
+        {
+            public const float InteractionRange = 3f;
+            public const string InteractionPrompt = "Press F to enter";
+            public const string ExitPrompt = "Press F to exit";
+            public const float PositionSaveInterval = 5f;
+
+            public static class HondaCG125
+            {
+                public const string VehicleId = "honda_cg125";
+                public const string DisplayName = "Honda CG125";
+
+                public const float MaxSpeed = 12f;
+                public const float Acceleration = 8f;
+                public const float BrakingForce = 16f;
+                public const float SteeringSpeed = 120f;
+                public const float MaxLeanAngle = 35f;
+                public const float LeanSpeed = 80f;
+                public const float Mass = 130f;
+                public const float MaxFuel = 100f;
+                public const float FuelConsumptionRate = 0.5f;
+                public const float MaxHealth = 100f;
+                public const int MaxGear = 4;
+
+                public static float[] GearRatios => new float[]
+                {
+                    0f,
+                    0.25f,
+                    0.45f,
+                    0.7f,
+                    1f
+                };
+            }
         }
     }
 }

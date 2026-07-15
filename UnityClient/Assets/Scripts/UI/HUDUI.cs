@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using RideVerse.Network;
 using RideVerse.Core;
+using RideVerse.Vehicles;
 
 namespace RideVerse.UI
 {
@@ -42,6 +43,19 @@ namespace RideVerse.UI
         [Header("Player Count")]
         [SerializeField] private TextMeshProUGUI _playerCountText;
 
+        [Header("Vehicle HUD")]
+        [SerializeField] private GameObject _vehiclePanel;
+        [SerializeField] private TextMeshProUGUI _speedText;
+        [SerializeField] private TextMeshProUGUI _gearText;
+        [SerializeField] private TextMeshProUGUI _vehicleNameText;
+        [SerializeField] private Slider _vehicleFuelBar;
+        [SerializeField] private Image _vehicleFuelFill;
+        [SerializeField] private TextMeshProUGUI _vehicleHealthText;
+
+        [Header("Interaction Prompt")]
+        [SerializeField] private GameObject _interactionPanel;
+        [SerializeField] private TextMeshProUGUI _interactionText;
+
         [Header("Chat")]
         [SerializeField] private GameObject _chatPanel;
         [SerializeField] private TMP_InputField _chatInput;
@@ -58,12 +72,15 @@ namespace RideVerse.UI
         private float _maxFuel = 100f;
         private int _wantedLevel;
         private int _chatMessageCount;
+        private VehicleController _trackedVehicle;
 
         private void Start()
         {
             BindChat();
             SubscribeEvents();
             UpdateAll();
+            SetVehicleHUDVisible(false);
+            SetInteractionPromptVisible(false);
         }
 
         private void OnDestroy()
@@ -74,6 +91,7 @@ namespace RideVerse.UI
         private void Update()
         {
             UpdateConnectionInfo();
+            UpdateVehicleHUD();
         }
 
         private void BindChat()
@@ -267,6 +285,84 @@ namespace RideVerse.UI
         public void SetHUDVisible(bool visible)
         {
             gameObject.SetActive(visible);
+        }
+
+        public void TrackVehicle(VehicleController vehicle)
+        {
+            _trackedVehicle = vehicle;
+            SetVehicleHUDVisible(vehicle != null);
+
+            if (vehicle != null && _vehicleNameText != null)
+            {
+                _vehicleNameText.text = vehicle.DisplayName;
+            }
+        }
+
+        public void UntrackVehicle()
+        {
+            _trackedVehicle = null;
+            SetVehicleHUDVisible(false);
+        }
+
+        public void SetVehicleHUDVisible(bool visible)
+        {
+            if (_vehiclePanel != null)
+                _vehiclePanel.SetActive(visible);
+        }
+
+        public void ShowInteractionPrompt(string message)
+        {
+            if (_interactionPanel != null)
+            {
+                _interactionPanel.SetActive(true);
+                if (_interactionText != null)
+                    _interactionText.text = message;
+            }
+        }
+
+        public void HideInteractionPrompt()
+        {
+            if (_interactionPanel != null)
+                _interactionPanel.SetActive(false);
+        }
+
+        private void SetInteractionPromptVisible(bool visible)
+        {
+            if (_interactionPanel != null)
+                _interactionPanel.SetActive(visible);
+        }
+
+        private void UpdateVehicleHUD()
+        {
+            if (_trackedVehicle == null) return;
+
+            if (_speedText != null)
+            {
+                float speedKmh = Mathf.Abs(_trackedVehicle.CurrentSpeed) * 3.6f;
+                _speedText.text = $"{speedKmh:F0}";
+            }
+
+            if (_gearText != null)
+            {
+                _gearText.text = _trackedVehicle.CurrentGear > 0
+                    ? $"Gear {_trackedVehicle.CurrentGear}"
+                    : "N";
+            }
+
+            if (_vehicleFuelBar != null)
+            {
+                _vehicleFuelBar.value = _trackedVehicle.FuelPercent;
+            }
+
+            if (_vehicleFuelFill != null)
+            {
+                _vehicleFuelFill.color = Color.Lerp(Color.red, Color.green, _trackedVehicle.FuelPercent);
+            }
+
+            if (_vehicleHealthText != null)
+            {
+                _vehicleHealthText.text = $"HP: {_trackedVehicle.CurrentHealth:F0}";
+            }
         }
     }
 }

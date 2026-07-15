@@ -27,11 +27,13 @@ namespace RideVerse.Player
         private bool _isGrounded;
         private bool _isSprinting;
         private bool _isJumping;
+        private bool _isRiding;
         private float _currentSpeed;
 
         public bool IsGrounded => _isGrounded;
         public float CurrentSpeed => _currentSpeed;
         public bool IsMoving => _moveInput.sqrMagnitude > 0.01f;
+        public bool IsRiding => _isRiding;
 
         private InputActions _inputActions;
 
@@ -63,6 +65,8 @@ namespace RideVerse.Player
 
         private void Update()
         {
+            if (_isRiding) return;
+
             CheckGround();
             HandleMovement();
             HandleGravity();
@@ -150,6 +154,21 @@ namespace RideVerse.Player
             _characterController.enabled = false;
             transform.position = position;
             _characterController.enabled = true;
+        }
+
+        public void SetRiding(bool riding)
+        {
+            _isRiding = riding;
+
+            if (riding)
+            {
+                _characterController.enabled = false;
+                _velocity = Vector3.zero;
+            }
+            else
+            {
+                _characterController.enabled = true;
+            }
         }
     }
 }
