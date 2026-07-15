@@ -110,3 +110,9 @@ api_v1_router.include_router(npcs_router)
 from app.api.v1.police import router as police_router  # noqa: E402
 
 api_v1_router.include_router(police_router)
+
+# ── Traffic (Traffic System) ──────────────────────────────────────
+
+from app.api.v1.traffic import router as traffic_router  # noqa: E402
+
+api_v1_router.include_router(traffic_router)
