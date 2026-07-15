@@ -38,7 +38,19 @@ from app.models.weapon import (
 from app.models.economy import ATM, DailyReward, Transaction, Wallet, TransactionType
 
 # Missions
-from app.models.mission import Mission, MissionHistory, PlayerMission
+from app.models.mission import (
+    Mission,
+    MissionCategory,
+    MissionCooldown,
+    MissionDifficulty,
+    MissionHistory,
+    MissionStatistics,
+    MissionStatus,
+    ObjectiveType,
+    MissionObjective,
+    PlayerMission,
+    PlayerObjectiveProgress,
+)
 
 # Garage
 from app.models.garage import Garage, GarageSlot
@@ -127,8 +139,16 @@ __all__ = [
     "ATM",
     # Missions
     "Mission",
+    "MissionCategory",
+    "MissionDifficulty",
+    "MissionStatus",
+    "MissionObjective",
+    "ObjectiveType",
     "PlayerMission",
+    "PlayerObjectiveProgress",
     "MissionHistory",
+    "MissionCooldown",
+    "MissionStatistics",
     # Garage
     "Garage",
     "GarageSlot",
