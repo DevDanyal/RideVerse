@@ -153,6 +153,25 @@ from app.models.npc import (
     SpawnCondition,
 )
 
+# Multiplayer & WebSocket
+from app.models.multiplayer import (
+    ConnectionStatus,
+    FriendPresence,
+    MultiplayerChatMessage,
+    MultiplayerRoom,
+    PlayerPosition,
+    PlayerPresence,
+    PresenceStatus,
+    RateLimitRecord,
+    RoomMember,
+    RoomStatus,
+    RoomType,
+    VehicleSync,
+    WebSocketSession,
+    WSEventType,
+    WSMessagePriority,
+)
+
 # Analytics & Logging
 from app.models.analytics import AnalyticsEvent
 from app.models.log import AuditLog, ErrorLog, LogSeverity
@@ -319,6 +338,22 @@ __all__ = [
     "NpcInteraction",
     "NpcStatistics",
     "NpcSpawn",
+    # Multiplayer & WebSocket
+    "ConnectionStatus",
+    "FriendPresence",
+    "MultiplayerChatMessage",
+    "MultiplayerRoom",
+    "PlayerPosition",
+    "PlayerPresence",
+    "PresenceStatus",
+    "RateLimitRecord",
+    "RoomMember",
+    "RoomStatus",
+    "RoomType",
+    "VehicleSync",
+    "WebSocketSession",
+    "WSEventType",
+    "WSMessagePriority",
     # Analytics & Logging
     "AnalyticsEvent",
     "AuditLog",

@@ -116,3 +116,9 @@ api_v1_router.include_router(police_router)
 from app.api.v1.traffic import router as traffic_router  # noqa: E402
 
 api_v1_router.include_router(traffic_router)
+
+# ── Multiplayer & WebSocket ──────────────────────────────────────
+
+from app.api.v1.websocket import router as multiplayer_router  # noqa: E402
+
+api_v1_router.include_router(multiplayer_router)
