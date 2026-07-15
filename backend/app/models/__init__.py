@@ -85,7 +85,21 @@ from app.models.leaderboard import Leaderboard, LeaderboardEntry, LeaderboardTyp
 # World
 from app.models.police import CrimeHistory, PoliceRecord
 from app.models.traffic import TrafficEvent, TrafficSeverity
-from app.models.npc import Npc, NpcDialogue, NpcType
+from app.models.npc import (
+    Npc,
+    NpcCategory,
+    NpcDialogue,
+    NpcInteraction,
+    NpcProfession,
+    NpcRelationship,
+    NpcSchedule,
+    NpcSchedulePeriod,
+    NpcSpawn,
+    NpcStatistics,
+    NpcStatus,
+    RelationshipLevel,
+    SpawnCondition,
+)
 
 # Analytics & Logging
 from app.models.analytics import AnalyticsEvent
@@ -195,8 +209,18 @@ __all__ = [
     "TrafficEvent",
     "TrafficSeverity",
     "Npc",
+    "NpcCategory",
+    "NpcStatus",
+    "NpcSchedulePeriod",
+    "RelationshipLevel",
+    "SpawnCondition",
+    "NpcSchedule",
     "NpcDialogue",
-    "NpcType",
+    "NpcProfession",
+    "NpcRelationship",
+    "NpcInteraction",
+    "NpcStatistics",
+    "NpcSpawn",
     # Analytics & Logging
     "AnalyticsEvent",
     "AuditLog",

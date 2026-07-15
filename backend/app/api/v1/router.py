@@ -98,3 +98,9 @@ api_v1_router.include_router(marketplace_router)
 from app.api.v1.missions import router as missions_router  # noqa: E402
 
 api_v1_router.include_router(missions_router)
+
+# ── NPCs (NPC System) ────────────────────────────────────────────────
+
+from app.api.v1.npcs import router as npcs_router  # noqa: E402
+
+api_v1_router.include_router(npcs_router)
