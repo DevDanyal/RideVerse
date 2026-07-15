@@ -93,8 +93,16 @@ namespace RideVerse.Vehicles
             }
 
             vehicle.MountRider(transform);
-            vehicle.StartEngine();
-            vehicle.SetInputEnabled(true);
+
+            if (vehicle.IsEngineRunning)
+            {
+                vehicle.SetInputEnabled(true);
+            }
+            else
+            {
+                vehicle.StartKickStart();
+                vehicle.SetInputEnabled(true);
+            }
 
             OnEnteredVehicle?.Invoke(vehicle);
             Debug.Log($"[VehicleInteraction] Entered {vehicle.DisplayName}");

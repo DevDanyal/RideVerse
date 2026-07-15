@@ -338,8 +338,7 @@ namespace RideVerse.UI
 
             if (_speedText != null)
             {
-                float speedKmh = Mathf.Abs(_trackedVehicle.CurrentSpeed) * 3.6f;
-                _speedText.text = $"{speedKmh:F0}";
+                _speedText.text = $"{_trackedVehicle.CurrentSpeed:F0}";
             }
 
             if (_gearText != null)

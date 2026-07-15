@@ -123,26 +123,82 @@ namespace RideVerse.Core
                 public const string VehicleId = "honda_cg125";
                 public const string DisplayName = "Honda CG125";
 
-                public const float MaxSpeed = 12f;
-                public const float Acceleration = 8f;
-                public const float BrakingForce = 16f;
-                public const float SteeringSpeed = 120f;
-                public const float MaxLeanAngle = 35f;
-                public const float LeanSpeed = 80f;
-                public const float Mass = 130f;
-                public const float MaxFuel = 100f;
-                public const float FuelConsumptionRate = 0.5f;
-                public const float MaxHealth = 100f;
-                public const int MaxGear = 4;
+                // Engine
+                public const float EngineDisplacement = 125f;
+                public const float MaxRPM = 9500f;
+                public const float IdleRPM = 1300f;
+                public const float RedlineRPM = 8500f;
+                public const float MaxPower = 11.5f;
+                public const float MaxTorque = 10.5f;
+                public const float MaxSpeedKmh = 110f;
 
-                public static float[] GearRatios => new float[]
+                // Transmission — 5-speed + Neutral
+                public const int TotalGears = 5;
+                public const int NeutralGear = 0;
+                public const float FinalDriveRatio = 2.533f;
+
+                public static readonly float[] GearRatios = new float[]
                 {
                     0f,
-                    0.25f,
-                    0.45f,
-                    0.7f,
-                    1f
+                    2.846f,
+                    1.875f,
+                    1.400f,
+                    1.115f,
+                    0.963f
                 };
+
+                // Clutch
+                public const float ClutchEngageRPM = 1500f;
+                public const float ClutchSlipRange = 500f;
+                public const float ClutchEngageSpeed = 5f;
+
+                // Physical dimensions
+                public const float Mass = 128f;
+                public const float WheelBase = 1.24f;
+                public const float FrontWheelRadius = 0.28f;
+                public const float RearWheelRadius = 0.28f;
+                public const float HandlebarWidth = 0.68f;
+
+                // Steering
+                public const float SteeringAngle = 45f;
+                public const float SteeringSpeed = 120f;
+                public const float SpeedDependentSteerFactor = 0.4f;
+
+                // Lean
+                public const float MaxLeanAngle = 40f;
+                public const float LeanSpeed = 80f;
+                public const float LeanRecoverySpeed = 120f;
+                public const float LowSpeedLeanLimit = 25f;
+                public const float LeanToSteerRatio = 0.7f;
+
+                // Suspension
+                public const float FrontSuspensionTravel = 0.13f;
+                public const float RearSuspensionTravel = 0.09f;
+                public const float FrontSpringForce = 35000f;
+                public const float RearSpringForce = 42000f;
+                public const float FrontDamperForce = 4500f;
+                public const float RearDamperForce = 5000f;
+                public const float SuspensionRestLength = 0.3f;
+
+                // Braking
+                public const float FrontBrakeForce = 4500f;
+                public const float RearBrakeForce = 3500f;
+                public const float EngineBrakeForce = 800f;
+                public const float ABSActivationThreshold = 0.3f;
+
+                // Fuel
+                public const float MaxFuel = 17f;
+                public const float FuelConsumptionRate = 0.04f;
+                public const float FuelWarningThreshold = 3f;
+
+                // Health / Damage
+                public const float MaxHealth = 100f;
+                public const float FallDamageThreshold = 3f;
+                public const float FallDamageMultiplier = 15f;
+
+                // Effects
+                public const float ExhaustSmokeRate = 0.1f;
+                public const float DustParticleSpeed = 2f;
             }
         }
     }

@@ -4,6 +4,7 @@ using RideVerse.Core;
 namespace RideVerse.Vehicles
 {
     [RequireComponent(typeof(VehicleController))]
+    [RequireComponent(typeof(Rigidbody))]
     public class VehiclePlaceholder : MonoBehaviour
     {
         [Header("Build Placeholder")]
@@ -39,12 +40,12 @@ namespace RideVerse.Vehicles
             BuildHandlebars();
             BuildFrontFender();
             BuildRearFender();
-            BuildFrontWheel();
-            BuildRearWheel();
-            BuildHeadlight();
-            BuildTailLight();
             BuildExhaust();
             BuildKickstand();
+            BuildLights();
+            SetupWheelColliders();
+            BuildWheelMeshes();
+            SetupComponents();
             WireRiderReferences();
         }
 
@@ -56,6 +57,13 @@ namespace RideVerse.Vehicles
                     Destroy(transform.GetChild(i).gameObject);
                 else
                     DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+
+            var existingColliders = GetComponents<WheelCollider>();
+            foreach (var col in existingColliders)
+            {
+                if (Application.isPlaying) Destroy(col);
+                else DestroyImmediate(col);
             }
         }
 
@@ -150,33 +158,6 @@ namespace RideVerse.Vehicles
                 new Vector3(0f, 0.42f, -0.5f), new Vector3(0.28f, 0.04f, 0.3f), _bodyColor);
         }
 
-        private void BuildFrontWheel()
-        {
-            GameObject wheel = CreatePrimitive(PrimitiveType.Cylinder, "Wheel_Front",
-                new Vector3(0f, 0.22f, 0.55f), new Vector3(0.35f, 0.06f, 0.35f), _tireColor);
-            wheel.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
-        }
-
-        private void BuildRearWheel()
-        {
-            GameObject wheel = CreatePrimitive(PrimitiveType.Cylinder, "Wheel_Rear",
-                new Vector3(0f, 0.22f, -0.55f), new Vector3(0.35f, 0.06f, 0.35f), _tireColor);
-            wheel.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
-        }
-
-        private void BuildHeadlight()
-        {
-            CreatePrimitive(PrimitiveType.Sphere, "Headlight",
-                new Vector3(0f, 0.8f, 0.55f), new Vector3(0.12f, 0.1f, 0.06f), _headlightColor);
-        }
-
-        private void BuildTailLight()
-        {
-            CreatePrimitive(PrimitiveType.Cube, "TailLight",
-                new Vector3(0f, 0.6f, -0.68f), new Vector3(0.15f, 0.06f, 0.03f),
-                new Color(0.8f, 0.05f, 0.05f));
-        }
-
         private void BuildExhaust()
         {
             CreatePrimitive(PrimitiveType.Cylinder, "Exhaust_Pipe",
@@ -190,6 +171,70 @@ namespace RideVerse.Vehicles
         {
             CreatePrimitive(PrimitiveType.Cylinder, "Kickstand",
                 new Vector3(-0.18f, 0.15f, -0.1f), new Vector3(0.02f, 0.18f, 0.02f), _metalColor);
+        }
+
+        private void BuildLights()
+        {
+            CreatePrimitive(PrimitiveType.Sphere, "Headlight",
+                new Vector3(0f, 0.8f, 0.55f), new Vector3(0.12f, 0.1f, 0.06f), _headlightColor);
+
+            CreatePrimitive(PrimitiveType.Cube, "BrakeLight_Left",
+                new Vector3(-0.1f, 0.6f, -0.68f), new Vector3(0.06f, 0.06f, 0.03f),
+                new Color(0.8f, 0.05f, 0.05f));
+
+            CreatePrimitive(PrimitiveType.Cube, "BrakeLight_Right",
+                new Vector3(0.1f, 0.6f, -0.68f), new Vector3(0.06f, 0.06f, 0.03f),
+                new Color(0.8f, 0.05f, 0.05f));
+
+            CreatePrimitive(PrimitiveType.Cube, "Indicator_Left",
+                new Vector3(-0.2f, 0.65f, 0.45f), new Vector3(0.04f, 0.04f, 0.02f),
+                new Color(1f, 0.5f, 0f));
+
+            CreatePrimitive(PrimitiveType.Cube, "Indicator_Right",
+                new Vector3(0.2f, 0.65f, 0.45f), new Vector3(0.04f, 0.04f, 0.02f),
+                new Color(1f, 0.5f, 0f));
+        }
+
+        private void SetupWheelColliders()
+        {
+            var frontCollider = gameObject.AddComponent<WheelCollider>();
+            frontCollider.radius = 0.28f;
+            frontCollider.suspensionDistance = 0.13f;
+            frontCollider.transform.localPosition = new Vector3(0f, 0.28f, 0.55f);
+
+            var rearCollider = gameObject.AddComponent<WheelCollider>();
+            rearCollider.radius = 0.28f;
+            rearCollider.suspensionDistance = 0.09f;
+            rearCollider.transform.localPosition = new Vector3(0f, 0.28f, -0.55f);
+        }
+
+        private void BuildWheelMeshes()
+        {
+            GameObject frontWheel = CreatePrimitive(PrimitiveType.Cylinder, "Wheel_Front_Mesh",
+                new Vector3(0f, 0.28f, 0.55f), new Vector3(0.35f, 0.06f, 0.35f), _tireColor);
+            frontWheel.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+
+            GameObject rearWheel = CreatePrimitive(PrimitiveType.Cylinder, "Wheel_Rear_Mesh",
+                new Vector3(0f, 0.28f, -0.55f), new Vector3(0.35f, 0.06f, 0.35f), _tireColor);
+            rearWheel.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+        }
+
+        private void SetupComponents()
+        {
+            if (GetComponent<MotorcyclePhysics>() == null)
+                gameObject.AddComponent<MotorcyclePhysics>();
+
+            if (GetComponent<VehicleLights>() == null)
+                gameObject.AddComponent<VehicleLights>();
+
+            if (GetComponent<VehicleDamage>() == null)
+                gameObject.AddComponent<VehicleDamage>();
+
+            if (GetComponent<VehicleEffects>() == null)
+                gameObject.AddComponent<VehicleEffects>();
+
+            if (GetComponent<MotorcycleAudioManager>() == null)
+                gameObject.AddComponent<MotorcycleAudioManager>();
         }
 
         private void WireRiderReferences()
