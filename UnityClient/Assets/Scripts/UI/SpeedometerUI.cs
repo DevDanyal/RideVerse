@@ -21,6 +21,7 @@ namespace RideVerse.UI
 
         private float currentSpeed;
         private float targetSpeed;
+        private int _lastDisplayedSpeed = -1;
 
         private void Start()
         {
@@ -54,7 +55,12 @@ namespace RideVerse.UI
         private void UpdateDigitalDisplay()
         {
             if (!showDigitalSpeed || speedText == null) return;
-            speedText.text = Mathf.RoundToInt(currentSpeed).ToString();
+            int display = Mathf.RoundToInt(currentSpeed);
+            if (display != _lastDisplayedSpeed)
+            {
+                _lastDisplayedSpeed = display;
+                speedText.text = display.ToString();
+            }
         }
 
         public void SetMaxSpeed(float maxSpeed)

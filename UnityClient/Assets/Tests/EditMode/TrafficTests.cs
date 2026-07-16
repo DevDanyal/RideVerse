@@ -18,7 +18,7 @@ public class TrafficEnumTests
     [Test]
     public void TrafficVehicleType_HasAllValues()
     {
-        Assert.AreEqual(13, System.Enum.GetValues(typeof(TrafficVehicleType)).Length);
+        Assert.AreEqual(14, System.Enum.GetValues(typeof(TrafficVehicleType)).Length);
     }
 
     [Test]

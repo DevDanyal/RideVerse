@@ -72,6 +72,11 @@ namespace RideVerse.Network
         {
             Disconnect();
 
+            if (_reconnectHandler != null)
+            {
+                _reconnectHandler.OnReconnectFailed -= HandleReconnectFailed;
+            }
+
             if (_webSocket != null)
             {
                 _webSocket.OnConnected -= HandleConnected;
@@ -80,6 +85,8 @@ namespace RideVerse.Network
                 _webSocket.OnMessage -= HandleMessage;
                 _webSocket.Dispose();
             }
+
+            _eventHandlers.Clear();
         }
 
         public void Connect()
@@ -217,7 +224,7 @@ namespace RideVerse.Network
             StopSendLoop();
             OnDisconnected?.Invoke();
 
-            if (_autoReconnect && AuthManager.Instance.IsAuthenticated)
+            if (_autoReconnect && AuthManager.Instance != null && AuthManager.Instance.IsAuthenticated)
             {
                 string url = WebSocketUrl;
                 if (!string.IsNullOrEmpty(url))

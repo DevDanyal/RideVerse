@@ -1,0 +1,306 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!73 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 26
+  productGUID: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6
+  AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
+  AndroidEnableSustainedPerformanceMode: 0
+  defaultScreenOrientation: 0
+  targetDevice: 2
+  useOnDemandResources: 0
+  accelerometerFrequency: 60
+  companyName: RideVerse
+  productName: RideVerse
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
+  m_SplashScreenOverlayOpacity: 1
+  m_SplashScreenAnimation: 1
+  m_SplashScreenLogoStyle: 1
+  m_SplashScreenDrawMode: 0
+  m_SplashScreenBackgroundAnimationZoom: 1
+  m_SplashScreenLogoAnimationZoom: 1
+  m_SplashScreenBackgroundLandscapeAspect: 1
+  m_SplashScreenBackgroundPortraitAspect: 1
+  m_SplashScreenBackgroundLandscapeUvs:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  m_SplashScreenLogos: []
+  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_HolographicTrackingLossScreen: {fileID: 0}
+  defaultScreenWidth: 1920
+  defaultScreenHeight: 1080
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+  m_StereoRenderingPath: 0
+  m_ActiveColorSpace: 1
+  m_MTRendering: 1
+  mipStripping: 0
+  numberOfMipsStripped: 0
+  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  iosShowActivityIndicatorOnLoading: -1
+  androidShowActivityIndicatorOnLoading: -1
+  displayResolutionDialog: 1
+  bundleVersion: 1.0.0
+  preloadedAssets: []
+  metroInputSource: 0
+  wsaTransparentSwapchain: 0
+  m_HolographicPauseOnTrackingLoss: 1
+  xboxOneDisableKinectGpuReservation: 1
+  xboxOneEnable7thCore: 1
+  vrSettings:
+    enable360StereoCapture: 0
+  isWsaHolographicRemotingEnabled: 0
+  enableFrameTimingStats: 0
+  enableOpenGLProfilerGPURecorders: 1
+  useHDRDisplay: 0
+  D3DHDRBitDepth: 0
+  m_ColorGamuts: 00000000
+  targetPixelDensity: 30
+  resolutionScalingMode: 0
+  androidSupportedAspectRatio: 1
+  androidMaxAspectRatio: 2.1
+  applicationIdentifier:
+    Standalone: com.rideverse.game
+    Android: com.rideverse.game
+    iPhone: com.rideverse.game
+  buildNumber:
+    Standalone: 0
+    iPhone: 0
+    tvOS: 0
+  overrideDefaultApplicationIdentifier: 1
+  AndroidBundleVersionCode: 1
+  AndroidMinSdkVersion: 26
+  AndroidTargetSdkVersion: 34
+  AndroidPreferredInstallLocation: 1
+  aotOptions:
+  stripEngineCode: 1
+  iPhoneStrippingLevel: 0
+  iPhoneScriptCallOptimization: 0
+  ForceInternetPermission: 0
+  ForceSDCardPermission: 0
+  CreateWallpaper: 0
+  APKExpansionFiles: 0
+  keepLoadedShadersAlive: 0
+  StripUnusedMeshComponents: 1
+  strictShaderVariantMatching: 0
+  VertexChannelCompressionMask: 4054
+  iPhoneSdkVersion: 988
+  iOSTargetOSVersionString: 12.0
+  tvOSSdkVersion: 0
+  tvOSRequireExtendedGameController: 0
+  tvOSTargetOSVersionString: 12.0
+  uIPrerenderedIcon: 0
+  uIRequiresPersistentWiFi: 0
+  uIRequiresFullScreen: 1
+  uIStatusBarHidden: 1
+  uIExitOnSuspend: 0
+  uIStatusBarStyle: 0
+  appleDeveloperTeamID:
+  iOSManualSigningProvisioningProfileID:
+  tvOSManualSigningProvisioningProfileID:
+  iOSManualSigningProvisioningProfileType: 0
+  tvOSManualSigningProvisioningProfileType: 0
+  appleEnableAutomaticSigning: 0
+  iOSRequireARKit: 0
+  iOSAutomaticallyDetectAndAddCapabilities: 1
+  appleEnableProMotion: 0
+  shaderPrecisionModel: 0
+  clonedFromGUID: c0afd0d1d80e3634a9dac47571a4a258
+  templatePackageId: com.unity.template.3d@6.0.3
+  templateDefaultScene: Assets/Scenes/SampleScene.unity
+  useCustomMainManifest: 0
+  useCustomLauncherManifest: 0
+  useCustomMainGradleTemplate: 0
+  useCustomLauncherGradleTemplate: 0
+  useCustomBaseGradleTemplate: 0
+  useCustomGradlePropertiesTemplate: 0
+  useCustomGradleSettingsTemplate: 0
+  useCustomProguardFile: 0
+  AndroidTargetArchitectures: 3
+  AndroidTargetDevices: 0
+  AndroidSplashScreenScale: 0
+  androidSplashScreen: {fileID: 0}
+  AndroidKeystoreName:
+  AndroidKeyaliasName:
+  AndroidBuildApkPerCpuArchitecture: 0
+  AndroidBuildSystem: 1
+  androidUseCustomKeystore: 0
+  m_AndroidApplicationEntry: 1
+  m_BuildScriptsOnly: 0
+  m_SaveArtifactsOutsideOfProject: 0
+  m_EnableInternalProfiler: 0
+  m_ActionOnDotNetUnhandledException: 1
+  m_EnableInputSystem: 1
+  m_DisableInputManager: 0
+  m_LogObjCUncaughtExceptions: 1
+  m_EnableCrashReportAPI: 0
+  m_EnableNativePlatformBackendsForNewInputSystem: 0
+  m_CameraUsageDescription:
+  m_LocationUsageDescription:
+  m_MicrophoneUsageDescription:
+  m_BluetoothUsageDescription:
+  m_SwitchNMETAOverride:
+  m_SwitchNetLibKey:
+  m_SwitchSocketMemoryPoolSize: 6144
+  m_SwitchSocketAllocatorPoolSize: 128
+  m_SwitchSocketConcurrencyLimit: 14
+  m_SwitchScreenResolutionBehavior: 2
+  m_SwitchUseCPUProfiler: 0
+  m_SwitchUseGOLDLinker: 0
+  m_SwitchLTOSetting: 0
+  m_SwitchApplicationID: 0x01004b9000490000
+  m_SwitchNSODependencies:
+  m_SwitchCompilerFlags:
+  m_SwitchTitleNames_0:
+  m_SwitchPublisherNames_0:
+  m_SwitchIcons_0: {fileID: 0}
+  m_SwitchSmallIcons_0: {fileID: 0}
+  m_SwitchManualHTML:
+  m_SwitchAccessibleURLs:
+  m_SwitchLegalInformation:
+  m_SwitchMainThreadStackSize: 1048576
+  m_SwitchPresenceGroupId:
+  m_SwitchLogoHandling: 0
+  m_SwitchReleaseVersion: 0
+  m_SwitchDisplayVersion: 1.0.0
+  m_SwitchStartupUserAccount: 0
+  m_SwitchSupportedLanguagesMask: 0
+  m_SwitchLogoType: 0
+  m_SwitchApplicationErrorCodeCategory:
+  m_SwitchUserAccountSaveDataSize: 0
+  m_SwitchUserAccountSaveDataJournalSize: 0
+  m_SwitchApplicationAttribute: 0
+  m_SwitchCardSpecSize: -1
+  m_SwitchCardSpecClock: -1
+  m_SwitchRatingsMask: 0
+  m_SwitchLocalCommunicationIds_0:
+  m_SwitchParentalControl: 0
+  m_SwitchAllowsScreenshot: 1
+  m_SwitchAllowsVideoCapturing: 1
+  m_SwitchAllowsRuntimeAddOnContentInstall: 0
+  m_SwitchDataLossConfirmation: 0
+  m_SwitchSupportedNpadCount: 8
+  m_SwitchSocketConfigEnabled: 0
+  m_SwitchTcpInitialSendBufferSize: 32
+  m_SwitchTcpInitialReceiveBufferSize: 64
+  m_SwitchTcpAutoSendBufferSizeMax: 256
+  m_SwitchTcpAutoReceiveBufferSizeMax: 256
+  m_SwitchUdpSendBufferSize: 9
+  m_SwitchUdpReceiveBufferSize: 42
+  m_SwitchSocketBufferEfficiency: 4
+  m_SwitchSocketInitializeEnabled: 1
+  m_SwitchNetworkInterfaceManagerInitializeEnabled: 1
+  m_SwitchUseNewStyleFilepaths: 0
+  m_SwitchUseMicroSleepForYield: 1
+  m_SwitchEnableRamDiskSupport: 0
+  m_SwitchMicroSleepForYieldTime: 25
+  psabordisabled: 0
+  m_PSPackageSize: 0
+  m_ProductGUID: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6
+  m_RenderingPath: 1
+  m_MobileRenderingPath: 1
+  metroPackageName: RideVerse
+  metroPackageVersion:
+  metroCertificatePath:
+  metroCertificatePassword:
+  metroCertificateSubject:
+  metroCertificateIssuer:
+  metroCertificateNotAfter: 0000000000000000
+  metroApplicationDescription: RideVerse
+  wsaImages: {}
+  metroTileShortName:
+  metroTileShowName: 0
+  metroMediumTileShowName: 0
+  metroLargeTileShowName: 0
+  metroWideTileShowName: 0
+  metroSupportStreamingInstall: 0
+  metroLastRequiredScene: 0
+  metroDefaultTileSize: 1
+  metroTileForegroundText: 2
+  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
+  metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628, a: 1}
+  platformCapabilities: {}
+  metroTargetDeviceFamilies: 1
+  metroFTAName:
+  metroFTAFileTypes: []
+  metroProtocolName:
+  m_VersionName:
+  m_VersionCode: 1
+  bundleIdentifier: com.rideverse.game
+  scriptingDefineSymbols:
+    Standalone: RIDEVERSE_STANDALONE
+    Android: RIDEVERSE_ANDROID
+    iPhone: RIDEVERSE_IOS
+  additionalCompilerArguments: {}
+  platformArchitecture: {}
+  scriptingBackend:
+    Standalone: 1
+    Android: 1
+    iPhone: 1
+  il2cppCompilerConfiguration: {}
+  il2cppCodeGeneration: 0
+  managedStrippingLevel:
+    Standalone: 1
+    Android: 1
+    iPhone: 1
+  incrementalIl2cppBuild: {}
+  suppressCommonWarnings: 1
+  allowUnsafeCode: 0
+  useDeterministicCompilation: 1
+  additionalIl2CppArgs:
+  scriptingRuntimeVersion: 1
+  gcIncremental: 1
+  gcWBarrierValidation: 0
+  apiCompatibilityLevelPerPlatform:
+    Standalone: 3
+    Android: 3
+    iPhone: 3
+  m_RenderingPath: 1
+  m_MobileRenderingPath: 1
+  metroInputSource: 0
+  m_BuildTargetGraphicsAPIs: {}
+  m_BuildTargetGraphicsTier: {}
+  m_ColorGamuts: 00000000
+  targetDevice: 2
+  m_ScriptingBackend:
+    Standalone: 1
+    Android: 1
+  m_Il2CppCompilerConfiguration:
+    Standalone: 1
+    Android: 1
+  m_ManagedStrippingLevel:
+    Standalone: 1
+    Android: 1
+  m_BuildNumber:
+    Standalone: 0
+    iPhone: 0
+  m_BuildTargetGroupLightmapEncodingQuality: {}
+  m_BuildTargetGroupHDRCubemapEncodingQuality: {}
+  m_BuildTargetGroupLightmapSettings: {}
+  m_BuildTargetGroupLoadStoreDebugModeSettings: {}
+  openGLRequireES31: 0
+  openGLRequireES31AEP: 0
+  openGLRequireES32: 0
+  m_TemplateCustomTags: {}
+  mobileMTRendering:
+    Android: 1
+    iPhone: 1
+  vulkanNumSwapchainBuffers: 3
+  vulkanEnableSetSRGBWrite: 0
+  vulkanEnablePreTransform: 0
+  vulkanEnableLateAcquireNextImage: 0
+  vulkanEnableCommandBufferRecycling: 1
+  m_ColorSpace: 1
+  m_CollisionMeshes: 1
+  m_QualitySettingsNames: []
+  m_QualitySettings: []
+  m_DefaultQualitySettingsLevel: -1

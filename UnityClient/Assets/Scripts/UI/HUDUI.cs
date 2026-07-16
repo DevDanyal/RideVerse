@@ -87,6 +87,9 @@ namespace RideVerse.UI
         private void OnDestroy()
         {
             UnsubscribeEvents();
+
+            if (_chatSendButton != null)
+                _chatSendButton.onClick.RemoveListener(OnChatSend);
         }
 
         private void Update()

@@ -22,7 +22,7 @@ namespace RideVerse.World.Performance
         [SerializeField] private int _maxActiveObjects = 300;
         [SerializeField] private float _gcInterval = 30f;
 
-        private float _lastGCTime;
+
 
         public bool IsAndroid => Application.platform == RuntimePlatform.Android;
         public int MaxActiveObjects => _maxActiveObjects;
@@ -74,17 +74,10 @@ namespace RideVerse.World.Performance
 
         private void ApplyMemorySettings()
         {
-            Application.targetFrameRate = _targetFrameRate;
-            System.GC.Collect();
         }
 
         private void Update()
         {
-            if (Time.time - _lastGCTime > _gcInterval)
-            {
-                _lastGCTime = Time.time;
-                System.GC.Collect();
-            }
         }
 
         public void SetTargetFrameRate(int fps)

@@ -15,6 +15,9 @@ namespace RideVerse.Traffic.Core
 
         private Dictionary<string, TrafficVehicle> _activeVehicles = new Dictionary<string, TrafficVehicle>();
         private List<string> _vehicleIdPool = new List<string>();
+        private readonly List<string> _despawnBuffer = new List<string>();
+        private readonly Dictionary<Color, Material> _materialCache = new Dictionary<Color, Material>();
+        private Material _baseMaterial;
         private float _spawnTimer;
         private float _updateTimer;
         private bool _isInitialized;
@@ -73,24 +76,24 @@ namespace RideVerse.Traffic.Core
 
         private void UpdateDespawning()
         {
-            List<string> toRemove = new List<string>();
+            _despawnBuffer.Clear();
 
             foreach (var kvp in _activeVehicles)
             {
                 if (kvp.Value == null)
                 {
-                    toRemove.Add(kvp.Key);
+                    _despawnBuffer.Add(kvp.Key);
                     continue;
                 }
 
                 float distance = Vector3.Distance(_playerTransform.position, kvp.Value.transform.position);
                 if (distance > _config.despawnRadius)
                 {
-                    toRemove.Add(kvp.Key);
+                    _despawnBuffer.Add(kvp.Key);
                 }
             }
 
-            foreach (var id in toRemove)
+            foreach (var id in _despawnBuffer)
             {
                 if (_activeVehicles.TryGetValue(id, out var vehicle))
                 {
@@ -225,9 +228,21 @@ namespace RideVerse.Traffic.Core
 
             go.transform.localScale = scale;
 
-            var mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            meshRenderer.material = GetOrCreateMaterial(color);
+        }
+
+        private Material GetOrCreateMaterial(Color color)
+        {
+            if (_materialCache.TryGetValue(color, out var cached))
+                return cached;
+
+            if (_baseMaterial == null)
+                _baseMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+
+            var mat = new Material(_baseMaterial);
             mat.color = color;
-            meshRenderer.material = mat;
+            _materialCache[color] = mat;
+            return mat;
         }
 
         private Color GetRandomVehicleColor(TrafficVehicleType type)
@@ -319,6 +334,8 @@ namespace RideVerse.Traffic.Core
                     return 35f;
                 case TrafficVehicleType.Taxi:
                     return 55f;
+                case TrafficVehicleType.Police:
+                    return 65f;
                 default:
                     return _config.defaultMaxSpeed;
             }

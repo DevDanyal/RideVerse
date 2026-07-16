@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!310 &1
+UnityConnectSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 1
+  m_Enabled: 1
+  m_TestMode: 0
+  m_TestModeProjectId:
+  m_TestModePrefix:
+  m_TestModeTimeout: 30
+  m_TestModeDevelopmentMode: 1
+  m_TestModeUseEventCollector: 0
+  m_TestModeMaxEventCount: 1000
+  m_TestModeMaxEventBytes: 1048576
+  m_TestModeMaxEventTimeout: 30
+  m_TestModeMaxEventPayloadSize: 1024
+  m_TestModeMaxEventConnectionCount: 10
+  m_TestModeMaxEventRetryCount: 3
+  m_TestModeMaxEventRetryDelay: 5
+  m_TestModeMaxEventBandwidthLimit: 1024
+  m_TestModeMaxEventBatchSize: 10
+  m_TestModeMaxEventBatchTimeout: 30
+  m_TestModeMaxEventBatchBytes: 1048576
+  m_TestModeMaxEventBatchConnectionCount: 10
+  m_TestModeMaxEventBatchRetryCount: 3
+  m_TestModeMaxEventBatchRetryDelay: 5
+  m_TestModeMaxEventBatchBandwidthLimit: 1024
+  m_TestModeMaxEventBatchPayloadSize: 1024

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using RideVerse.Core;
 using RideVerse.Player;
 
@@ -13,6 +14,8 @@ namespace RideVerse.Vehicles
         [Header("Settings")]
         [SerializeField] private float _interactionRange = Constants.Vehicle.InteractionRange;
 
+        private static readonly HashSet<VehicleController> _registeredVehicles = new HashSet<VehicleController>();
+
         private VehicleController _nearestVehicle;
         private VehicleController _currentVehicle;
         private bool _isRiding;
@@ -23,6 +26,16 @@ namespace RideVerse.Vehicles
 
         public event System.Action<VehicleController> OnEnteredVehicle;
         public event System.Action<VehicleController> OnExitedVehicle;
+
+        public static void RegisterVehicle(VehicleController vehicle)
+        {
+            if (vehicle != null) _registeredVehicles.Add(vehicle);
+        }
+
+        public static void UnregisterVehicle(VehicleController vehicle)
+        {
+            _registeredVehicles.Remove(vehicle);
+        }
 
         private void Awake()
         {
@@ -52,15 +65,16 @@ namespace RideVerse.Vehicles
         {
             _nearestVehicle = null;
             float closestDist = _interactionRange;
+            float closestDistSq = closestDist * closestDist;
+            Vector3 pos = transform.position;
 
-            var vehicles = FindObjectsByType<VehicleController>(FindObjectsSortMode.None);
-
-            foreach (var vehicle in vehicles)
+            foreach (var vehicle in _registeredVehicles)
             {
-                float dist = Vector3.Distance(transform.position, vehicle.transform.position);
-                if (dist < closestDist)
+                if (vehicle == null) continue;
+                float distSq = (vehicle.transform.position - pos).sqrMagnitude;
+                if (distSq < closestDistSq)
                 {
-                    closestDist = dist;
+                    closestDistSq = distSq;
                     _nearestVehicle = vehicle;
                 }
             }

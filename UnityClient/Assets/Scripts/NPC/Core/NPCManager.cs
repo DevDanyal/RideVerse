@@ -26,6 +26,7 @@ namespace RideVerse.NPC.Core
 
         private List<NPCBrain> _activeNPCs = new List<NPCBrain>();
         private List<NPCData> _npcDataList = new List<NPCData>();
+        private readonly List<NPCBrain> _despawnBuffer = new List<NPCBrain>();
         private Transform _playerTransform;
         private float _spawnTimer;
         private float _spawnInterval = 2f;
@@ -157,18 +158,18 @@ namespace RideVerse.NPC.Core
                 }
             }
 
-            List<NPCBrain> toDespawn = new List<NPCBrain>();
+            _despawnBuffer.Clear();
             foreach (var npc in _activeNPCs)
             {
                 if (npc == null) continue;
                 float distance = Vector3.Distance(_playerTransform.position, npc.transform.position);
                 if (distance > _config.despawnRadius)
                 {
-                    toDespawn.Add(npc);
+                    _despawnBuffer.Add(npc);
                 }
             }
 
-            foreach (var npc in toDespawn)
+            foreach (var npc in _despawnBuffer)
             {
                 DespawnNPC(npc);
             }

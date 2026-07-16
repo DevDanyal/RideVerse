@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &1
+EditorUserBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_ActiveBuildTarget: 13
+  m_ActiveBuildTargetGroup: 7
+  m_ActiveBuildTargetSubtarget: 0
+  m_BuildTargetIcons: []
+  m_BuildTargetPlatformIcons: []
+  m_BuildTargetBatching: []
+  m_BuildTargetShaderSettings: []
+  m_BuildTargetGraphicsJobs: []
+  m_BuildTargetGraphicsJobMode: []
+  m_BuildTargetGraphicsAPIs:
+  - m_BuildTarget: AndroidPlayer
+    m_APIs: 150000000b000000
+    m_Automatic: 0
+  m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupHDRCubemapEncodingQuality: []
+  m_BuildTargetGroupLoadStoreDebugModeSettings: []
+  m_BuildTargetNormalMapEncoding: []
+  m_BuildTargetDefaultTextureCompressionFormat: []
+  m_PlayModeTestRunnerEnabled: 0
+  m_RunPlayModeTestAsEditModeTest: 0
+  m_ActionOnDotNetUnhandledException: 1
+  m_EnableInternalProfiler: 0
+  m_LogObjCUncaughtExceptions: 1
+  m_EnableCrashReportAPI: 0
+  m_EnableInputSystem: 1
+  m_DisableInputManager: 0
+  m_EnableNativePlatformBackendsForNewInputSystem: 0
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
+  m_SplashScreenOverlayOpacity: 1
+  m_SplashScreenAnimation: 1
+  m_SplashScreenLogoStyle: 1
+  m_SplashScreenDrawMode: 0
+  m_SplashScreenBackgroundAnimationZoom: 1
+  m_SplashScreenLogoAnimationZoom: 1
+  m_SplashScreenBackgroundLandscapeAspect: 1
+  m_SplashScreenBackgroundPortraitAspect: 1
+  m_SplashScreenBackgroundLandscapeUvs:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  m_SplashScreenLogos: []
+  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_HolographicTrackingLossScreen: {fileID: 0}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundLandscape: {fileID: 0}
+  m_SplashScreenBackgroundPortrait: {fileID: 0}
+  m_VirtualRealityEnabled: 0
+  m_UnitySplashStyle: 1
+  m_CloudEnabled: 0
+  m_EnterPlayModeOptionsEnabled: 0
+  m_EnterPlayModeOptions: 3
+  m_ShowLightmapResolutionOverlay: 1
+  m_UseLegacyProbeSampleCount: 0
+  m_AssetPipelineMode: 1
+  m_CacheServerMode: 0
+  m_CacheServerEndpoint:
+  m_CacheServerNamespacePrefix: default
+  m_CacheServerEnableDownload: 1
+  m_CacheServerEnableUpload: 1
+  m_CacheServerValidationMode: 2
+  m_CacheServerDownloadBatchSize: 128
+  m_EnableTextureStreamingInEditMode: 1
+  m_EnableTextureStreamingInPlayMode: 1
+  m_AsyncShaderCompilation: 1
+  m_CachingShaderPreprocessor: 1
+  m_PrefabModeAllowAutoSave: 1
+  m_SpritePackerMode: 0
+  m_SpritePackerPaddingPower: 1
+  m_EtcTextureCompressorBehavior: 1
+  m_EtcTextureFastCompressor: 1
+  m_EtcTextureNormalCompressor: 2
+  m_EtcTextureBestCompressor: 4
+  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;asmref;rsp
+  m_ProjectGenerationRootNamespace: RideVerse
+  m_CollabEditorSettings:
+    inProgressEnabled: 1
+  m_EnableEnlightenBakedGI: 0
+  m_EnableEnlightenRealtimeGI: 0
+  m_EnlightenBakedGIUpdateTime: 30
+  m_EnlightenUpdateFrequency: 1
+  m_EnlightenScenePreset: 0
+  m_BuildTargetGroupShaderPrecisionModel: []

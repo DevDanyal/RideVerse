@@ -167,6 +167,20 @@ namespace RideVerse.Game
             }
         }
 
+        private void OnDestroy()
+        {
+            if (_vehicleInteraction != null)
+            {
+                _vehicleInteraction.OnEnteredVehicle -= HandleEnteredVehicle;
+                _vehicleInteraction.OnExitedVehicle -= HandleExitedVehicle;
+            }
+
+            if (_stateSaver != null)
+            {
+                _stateSaver.SaveImmediate();
+            }
+        }
+
         private void OnApplicationPause(bool paused)
         {
             if (paused && _stateSaver != null)

@@ -14,7 +14,8 @@ namespace RideVerse.Traffic.Core
         DeliveryVan,
         CargoTruck,
         FuelTanker,
-        Taxi
+        Taxi,
+        Police
     }
 
     public enum TrafficAIBehaviorState

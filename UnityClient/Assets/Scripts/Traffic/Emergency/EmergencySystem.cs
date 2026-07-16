@@ -105,10 +105,6 @@ namespace RideVerse.Traffic.Emergency
             {
                 case TrafficVehicleType.Police:
                     return EmergencyType.Police;
-                case TrafficVehicleType.Bus:
-                    return EmergencyType.Ambulance;
-                case TrafficVehicleType.CargoTruck:
-                    return EmergencyType.FireTruck;
                 default:
                     return EmergencyType.None;
             }
